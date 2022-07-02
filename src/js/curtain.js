@@ -219,7 +219,3 @@ window.addEventListener('load', () => {
     }
   }
 });
-
-setTimeout(function () {
-  console.clear();
-}, 2000);

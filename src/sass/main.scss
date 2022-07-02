@@ -1,6 +1,6 @@
 @import '../../node_modules/bootstrap/scss/functions';
 
-// custom variables
+// overwrite Bootstrap variables
 @import './base/variables';
 
 // required Bootstrap stylesheets
@@ -58,9 +58,4 @@ body {
 @import './components/portfolio';
 @import './components/contact';
 @import './components/footer';
-
-// NOTE: classes to not remove
-// is-invalid , is-valid , aos-init , aos-animate , collapsing , show
-// collapsed
-
-// REVIEW later on change the default nav bootstrap animation
+@import './components/themesToggler';

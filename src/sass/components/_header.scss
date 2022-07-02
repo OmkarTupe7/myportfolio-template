@@ -8,6 +8,7 @@ header #header {
     display: block;
     width: 40%;
     padding: 0;
+    color: var(--bs-secondary);
     @include media($bp-md) {
       width: 30%;
     }
@@ -16,38 +17,6 @@ header #header {
     }
     @include media($bp-xl) {
       width: 20%;
-    }
-
-    svg {
-      fill: var(--bs-secondary);
-    }
-  }
-
-  // theme button
-  #theme {
-    background: transparent;
-    border: none;
-    color: var(--bs-primary);
-    font-size: 1.5rem;
-    position: fixed;
-    bottom: 3vh;
-    right: 3vh;
-
-    i::after {
-      content: '';
-      width: 2.5rem;
-      height: 2.5rem;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: var(--bs-secondary);
-      z-index: -1;
-      border-radius: 50%;
-    }
-
-    .bi-brightness-high-fill {
-      display: none;
     }
   }
 

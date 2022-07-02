@@ -1,15 +1,16 @@
-// typography
+// === Typography ===
+// for body
 @mixin font-primary {
   font-family: 'Raleway', sans-serif;
 }
-
+// for heading
 @mixin font-secondary {
   font-family: 'Finger Paint', cursive;
 }
 
-// Transition
+// === Transition ===
 @mixin transition {
-  transition: 0.3s all ease-in-out;
+  transition: 0.4s all ease-in-out;
 }
 
 // inline margin
@@ -26,7 +27,7 @@
   font-size: 2.5rem;
 }
 
-// ==== media queries ====
+// === media queries ===
 // breakpoints variables
 $bp-sm: map-get($grid-breakpoints, sm);
 $bp-md: map-get($grid-breakpoints, md);

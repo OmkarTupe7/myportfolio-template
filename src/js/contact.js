@@ -10,6 +10,7 @@ const charCounter = document.querySelector('.valid-feedback');
 
 const emailPattern =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const API_URL = '<YOUR_FORM_URL_HERE>';
 
 const warningClass = 'is-invalid';
 const successClass = 'is-valid';
@@ -48,7 +49,7 @@ messageInput.addEventListener('keyup', e => {
   charCounter.textContent = `${messageInput.value.length} / 400`;
 });
 
-// submitButton.disabled = fal
+// disable submitButton if the inputs have not achieved the conditions
 function checkAllInputs() {
   submitButton.disabled =
     nameInput.value.length > 1 &&
@@ -59,46 +60,25 @@ function checkAllInputs() {
       : true;
 }
 
-// sending the email
-import '@emailjs/browser/dist/email';
-const emailjsPublicKey = fixKeyStartWithNumber(
-  import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-);
-const contactService = import.meta.env.VITE_CONTACT_SERVICE;
-const templateName = import.meta.env.VITE_TEMPLATE_NAME;
-
-function fixKeyStartWithNumber(key) {
-  return key
-    .split('')
-    .filter(char => char !== "'")
-    .join('');
-}
-
-// Send Message
-(function () {
-  emailjs.init(emailjsPublicKey);
-})();
-
-contactForm.addEventListener('submit', e => {
+// Send Email
+async function sendEmail(e) {
   e.preventDefault();
   submitButton.style.display = 'none';
   spinner.style.display = 'inline-block';
+  let data = new FormData(contactForm);
+  await fetch(API_URL, {
+    method: 'POST',
+    body: data
+  });
+  spinner.style.display = 'none';
+  thanksMessage.style.display = 'block';
+  e.target.reset();
+  [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
+    input.classList.remove(successClass);
+  });
+}
 
-  // send email
-  emailjs.sendForm(contactService, templateName, e.target).then(
-    function () {
-      spinner.style.display = 'none';
-      thanksMessage.style.display = 'block';
-      e.target.reset();
-      [nameInput, emailInput, subjectInput, messageInput].forEach(input => {
-        input.classList.remove(successClass);
-      });
-    },
-    function (err) {
-      alert('Something went wrong!! Please try again.');
-    }
-  );
-});
+contactForm.addEventListener('submit', sendEmail);
 
 // clear form on load page
 contactForm.reset();

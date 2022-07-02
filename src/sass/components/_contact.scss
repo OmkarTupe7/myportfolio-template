@@ -1,8 +1,8 @@
 #contact {
-  margin-bottom: 150px;
-
   .container > .row {
-    height: min(800px, 95vh);
+    @include media($bp-lg) {
+      height: min(500px, 95vh);
+    }
   }
 
   h1 {

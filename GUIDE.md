@@ -18,11 +18,12 @@
   - [About](#about)
   - [Projects](#projects)
   - [Contact](#contact)
+  - [Deploy](#deploy)
 
 ## Requirements
 
 Before going forward you must have **Node js** installed on your machine.  
-Go to the links below for installation if you don't have installed yet.
+Go to the link below for installation if you don't have installed yet.
 
 - [Node js](https://nodejs.org/en/download)
 
@@ -39,11 +40,11 @@ Go to the links below for installation if you don't have installed yet.
 
 ## Customize Style
 
-I tried to make it more customizable so you can adjust it to your need 🏹
+I tried to make it more customizable so you can adjust it to your own need 🏹
 
 ### Colors
 
-I follow the 60-30-10 rule. So if don't like the palettes and you want to add yours. you will need two palettes 🎨 (light/dark). and change them in two files.
+I follow the 60-30-10 rule. So if you don't like the palettes and you want to add yours, you will need two palettes 🎨 (light/dark). and change them in two files.
 
 1️⃣ First file
 
@@ -82,26 +83,26 @@ const themes = {
 };
 ```
 
-The `primaryRGB` and `secondaryRGB` is the value of color in **RGB**. the purpose of it is to use the color variable with custom opacity like this
+The `primaryRGB` and `secondaryRGB` are values in the **RGB** color format. The purpose of it is to use the color variable with custom opacity like this
 
 ```css
 box-shadow: 0 3px 6px rgba(var(--bs-secondary-rgb), 0.2);
 ```
 
-I could use this [trick](https://twitter.com/zougari47/status/1538520749312552960) but I stuck with the Bootstrap system.  
-If you want to convert from **HEX** to **RGB** to change it check this [tweet](https://twitter.com/zougari47/status/1543033189337337861).
+I could use this [trick](https://twitter.com/zougari47/status/1538520749312552960) but I prefer sticking with the Bootstrap system.  
+If you want to convert from **HEX** to **RGB** check this [tweet](https://twitter.com/zougari47/status/1543033189337337861).
 
 ### Fonts
 
-I used two font [Finger Paint](https://fonts.google.com/specimen/Finger+Paint?query=finger) for headings and [Raleway](https://fonts.google.com/specimen/Raleway?query=Raleway) for body. (⚠ I used them locally `src/fonts`)
+I used two fonts [Finger Paint](https://fonts.google.com/specimen/Finger+Paint?query=finger) for headings and [Raleway](https://fonts.google.com/specimen/Raleway?query=Raleway) for body. (⚠ I used them locally `src/fonts`)
 
-If you're not satisfy with these fonts. go to `/src/sass/base/_typography.scss` and clean all code then import your fonts.
+If you're not satisfied with these fonts, go to `/src/sass/base/_typography.scss` ,and clean all the code then import your fonts.
 
 Then go `/src/sass/base/_mixin.scss` and change the value of `font-primary` and `font-secondary` @mixin.
 
 ### Breakpoints
 
-I stuck with Bootstrap breakpoints
+Again, I prefer Bootstrap's breakpoints
 
 ```scss
 $grid-breakpoints: (
@@ -116,15 +117,15 @@ $grid-breakpoints: (
 
 You can change it by writing this snippet above with your preferred values in `src/sass/base/_variables.scss`
 
-But it is recommended to not change it.
+But it is recommended not to change it.
 
 ### Icons
 
-You can change the social media icons. This project using [bootstrap-icons](https://icons.getbootstrap.com/) library.
+You can change the social media icons. This project uses [bootstrap-icons](https://icons.getbootstrap.com/) library.
 
 ## Header
 
-There is nothing to change here besides your logo. if you want the logo to change color while toggling between dark/light mode past the **SVG** code and make sure have attribute fill with currentcolor value `fill="currentcolor"`. otherwise, import it with img tag.
+There is nothing to change here besides your logo. If you want the logo to change color while toggling between dark/light mode, paste the **SVG** code and make sure it has the attribute fill with currentcolor value `fill="currentcolor"`. Otherwise, import it with img tag.
 
 ## Hero
 
@@ -132,7 +133,7 @@ There is nothing to change here besides your logo. if you want the logo to chang
 
 To change the value of the typed effect go to `/src/js/typed.js` and put your headlines in the string array.
 
-📌 If you want the typed effect never stop. add `loop:true` in the options
+📌 If you want the typed effect to keep looping, uncomment `loop:true` in the options
 
 ### Image
 
@@ -144,7 +145,7 @@ If you want to remove it delete this line from `src/js/main.js`
 import './curtain';
 ```
 
-Ang go to `/src/sass/components/_hero.scss` and change `.curtain img` to this value
+And go to `/src/sass/components/_hero.scss` and change `.curtain img` to this value
 
 ```css
 .curtain img {
@@ -159,7 +160,7 @@ Otherwise just change the image src.
 
 ## About
 
-Talk about yourself in three paragraphs in the about section. For the skills is better to not go over 12.
+Talk about yourself in three paragraphs in the about section. For the skills it's better to not go over 12.
 
 If you want to add a skill logo which doesn't exist in `/src/img/stack-icons` :
 
@@ -266,3 +267,11 @@ If you want the contact form to work. follow this step 👇:
   ```js
   const API_URL = 'https://formbold.com/s/id';
   ```
+
+## Deploy
+
+After you are done editing:
+
+- Stop dev mode with `Ctrl`+`C`
+- Run command `npm run build`
+- It will create a **dist** folder, This folder is what you should deploy
